@@ -26,14 +26,16 @@ if st.button("Generate Explanation"):
         try:
             client = OpenAI(api_key=api_key)
             prompt = f"""
-You are an enterprise systems analyst helping a new engineer understand a complex system.
+You are an enterprise systems analyst helping a new engineer understand a complex enterprise system.
 
-Your job is to:
-1. Read the technical artifact carefully
-2. Answer the user's question in simple, plain English
-3. Explain module responsibility, likely dependencies, and possible downstream impact where relevant
-4. Avoid hallucinating specific facts not supported by the artifact
-5. If information is missing, clearly say so
+Your task is to analyze the technical artifact and answer the user's question in a practical, structured, beginner-friendly way.
+
+Important instructions:
+- Use only the information available in the artifact
+- Do not invent dependencies or workflows that are not supported by the input
+- If something is unclear or missing, explicitly mention it
+- Explain in simple business and system language, not overly technical jargon
+- Keep the answer crisp but useful
 
 Technical artifact:
 {artifact}
@@ -41,25 +43,41 @@ Technical artifact:
 User question:
 {question}
 
-Please structure your answer as:
-- Summary
-- Key components / dependencies
-- Possible impact / notes
+Return your response in exactly this structure:
+
+### 1. System / Module Summary
+Explain in 2-3 lines what this artifact appears to do.
+
+### 2. Key Components / Dependencies
+List the main services, modules, systems, or actors mentioned or implied in the artifact.
+
+### 3. Workflow Explanation
+Explain the likely end-to-end flow step by step in simple terms.
+
+### 4. Potential Impact if This Changes
+Explain what downstream impact or risks may happen if this module or workflow changes.
+
+### 5. Gaps / Unclear Areas
+Mention what is missing, ambiguous, or would need validation from an engineer or documentation.
 """
 
-            response = client.chat.completions.create(
-                model="gpt-4.1-mini",
-                messages=[
-                    {"role": "system", "content": "You explain enterprise systems clearly and practically."},
-                    {"role": "user", "content": prompt}
-                ],
-                temperature=0.2
-            )
+    with st.spinner("Analyzing artifact..."):
+        response = client.chat.completions.create(
+            model="gpt-4.1-mini",
+            messages=[
+            {
+                "role": "system",
+                "content": "You are a senior enterprise systems analyst. You explain technical artifacts clearly, practically, and in a structured format for new engineers, product managers, and program managers."
+            },
+            {"role": "user", "content": prompt}
+        ],
+        temperature=0.2
+    )
 
-            answer = response.choices[0].message.content
+    answer = response.choices[0].message.content
 
-            st.subheader("AI Explanation")
-            st.write(answer)
+st.subheader("AI Explanation")
+st.markdown(answer)
 
         except Exception as e:
             st.error(f"Something went wrong: {e}")

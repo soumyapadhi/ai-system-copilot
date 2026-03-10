@@ -331,9 +331,7 @@ st.markdown(
     """
     <div class="hero-wrapper">
         <div class="hero-topline">AI Product Prototype • Enterprise Systems • Legacy Modernization</div>
-        <div class="hero-main-title">
-            🔎 <span class="hero-highlight">SystemLens</span>
-        </div>
+        <div class="hero-main-title">🔎 <span class="hero-highlight">SystemLens</span></div>
         <div class="hero-description">
             Understand enterprise systems, technical artifacts, and legacy code faster.
             Upload a document or paste a workflow to analyze dependencies, assess release impact,

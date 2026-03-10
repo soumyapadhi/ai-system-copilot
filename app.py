@@ -329,27 +329,25 @@ def extract_artifact_text(uploaded_file):
 # -----------------------------
 st.markdown(
     """
-    <div class="hero-wrapper">
-        <div class="hero-topline">AI Product Prototype • Enterprise Systems • Legacy Modernization</div>
-        <div class="hero-main-title">🔎 <span class="hero-highlight">SystemLens</span></div>
-        <div class="hero-description">
-            Understand enterprise systems, technical artifacts, and legacy code faster.
-            Upload a document or paste a workflow to analyze dependencies, assess release impact,
-            generate onboarding summaries, and break down COBOL logic into business-readable explanations.
-        </div>
-
-        <div class="hero-badges">
-            <div class="hero-badge">Explain Artifacts</div>
-            <div class="hero-badge">Trace Dependencies</div>
-            <div class="hero-badge">Assess Change Impact</div>
-            <div class="hero-badge">Onboarding Summaries</div>
-            <div class="hero-badge">COBOL Breakdown</div>
-        </div>
-
-        <div class="hero-footer-note">
-            Designed to help engineers, TPMs, PMs, and modernization teams make sense of complex systems.
-        </div>
+<div class="hero-wrapper">
+    <div class="hero-topline">AI Product Prototype • Enterprise Systems • Legacy Modernization</div>
+    <div class="hero-main-title">🔎 <span class="hero-highlight">SystemLens</span></div>
+    <div class="hero-description">
+        Understand enterprise systems, technical artifacts, and legacy code faster.
+        Upload a document or paste a workflow to analyze dependencies, assess release impact,
+        generate onboarding summaries, and break down COBOL logic into business-readable explanations.
     </div>
+    <div class="hero-badges">
+        <div class="hero-badge">Explain Artifacts</div>
+        <div class="hero-badge">Trace Dependencies</div>
+        <div class="hero-badge">Assess Change Impact</div>
+        <div class="hero-badge">Onboarding Summaries</div>
+        <div class="hero-badge">COBOL Breakdown</div>
+    </div>
+    <div class="hero-footer-note">
+        Designed to help engineers, TPMs, PMs, and modernization teams make sense of complex systems.
+    </div>
+</div>
     """,
     unsafe_allow_html=True
 )

@@ -19,6 +19,9 @@ st.set_page_config(
 st.markdown(
     """
     <style>
+    /* =========================
+       Base App Theme
+    ========================== */
     .stApp {
         background: linear-gradient(180deg, #0b1220 0%, #111827 100%);
         color: #e5e7eb;
@@ -34,6 +37,13 @@ st.markdown(
         color: #f8fafc;
     }
 
+    p, label {
+        color: #e5e7eb !important;
+    }
+
+    /* =========================
+       Hero Section
+    ========================== */
     .hero-box {
         background: linear-gradient(135deg, rgba(14,165,233,0.18), rgba(99,102,241,0.18));
         border: 1px solid rgba(148,163,184,0.18);
@@ -56,6 +66,9 @@ st.markdown(
         line-height: 1.6;
     }
 
+    /* =========================
+       Feature Cards
+    ========================== */
     .feature-card {
         background: rgba(30,41,59,0.72);
         border: 1px solid rgba(148,163,184,0.14);
@@ -78,6 +91,9 @@ st.markdown(
         line-height: 1.5;
     }
 
+    /* =========================
+       Content Cards
+    ========================== */
     .section-card {
         background: rgba(15,23,42,0.72);
         border: 1px solid rgba(148,163,184,0.14);
@@ -108,42 +124,29 @@ st.markdown(
         border-top: 1px solid rgba(148,163,184,0.16);
     }
 
-    /* Labels and general text */
-    label, p {
-    color: #e5e7eb;
-    }
-
-   /* uploader placeholder text */
-   [data-testid="stFileUploader"] small {
-     color: #e5e7eb !important;
-    }
-
-   [data-testid="stFileUploader"] span {
-     color: #e5e7eb !important;
-    }
-
-    /* Text inputs and text areas */
-    textarea,
-    textarea::placeholder,
-    input,
-    input::placeholder {
+    /* =========================
+       Inputs
+    ========================== */
+    .stTextInput input,
+    .stTextArea textarea {
         background-color: #0f172a !important;
         color: #e5e7eb !important;
         -webkit-text-fill-color: #e5e7eb !important;
         border-radius: 12px !important;
     }
 
-    /* Streamlit text input + text area wrappers */
-    .stTextInput input,
-    .stTextArea textarea {
-        background-color: #0f172a !important;
-        color: #e5e7eb !important;
-        -webkit-text-fill-color: #e5e7eb !important;
+    .stTextInput input::placeholder,
+    .stTextArea textarea::placeholder {
+        color: #94a3b8 !important;
+        opacity: 1 !important;
     }
 
-    /* Selectbox text */
+    /* =========================
+       Selectbox
+    ========================== */
     .stSelectbox div[data-baseweb="select"] > div {
         background-color: #0f172a !important;
+        border-radius: 12px !important;
         color: #e5e7eb !important;
     }
 
@@ -151,78 +154,16 @@ st.markdown(
         color: #e5e7eb !important;
     }
 
-    /* File uploader outer container */
-    .stFileUploader {
-        background: transparent !important;
-        border-radius: 14px;
-        padding: 0;
-    }
-    
-    /* Actual dropzone */
-    [data-testid="stFileUploaderDropzone"] {
-        background-color: #f8fafc !important;
-        border: 1px solid rgba(239, 68, 68, 0.85) !important;
-        border-radius: 18px !important;
-        padding: 14px !important;
-    }
-    
-    /* Drag and drop text */
-    [data-testid="stFileUploaderDropzone"] div,
-    [data-testid="stFileUploaderDropzone"] span,
-    [data-testid="stFileUploaderDropzone"] small,
-    [data-testid="stFileUploaderDropzone"] p {
-        color: #475569 !important;
-        opacity: 1 !important;
-        -webkit-text-fill-color: #475569 !important;
-    }
-    
-    /* Uploaded filename text */
-    [data-testid="stFileUploaderFileName"] {
-        color: #0f172a !important;
-        font-weight: 600 !important;
-    }
-    
-    /* Browse files button */
-    .stFileUploader button {
-        background: linear-gradient(90deg, #0ea5e9, #6366f1) !important;
-        color: #ffffff !important;
-        border: none !important;
-        border-radius: 12px !important;
-        font-weight: 700 !important;
-    }
-    
-    .stFileUploader button:hover {
-        background: linear-gradient(90deg, #38bdf8, #818cf8) !important;
-        color: #ffffff !important;
+    .stSelectbox svg {
+        fill: #e5e7eb !important;
     }
 
-    /* Browse files button */    
-    .stFileUploader button {
-        background: linear-gradient(90deg, #0ea5e9, #6366f1) !important;
-        color: #ffffff !important;
-        border: none !important;
-        border-radius: 12px !important;
-        font-weight: 700 !important;
-    }
-
-    .stFileUploader button:hover {
-        background: linear-gradient(90deg, #38bdf8, #818cf8) !important;
-        color: #ffffff !important;
-    }
-
-    /* Uploaded file name / helper text */
-    # .stFileUploader small,
-    # .stFileUploader span,
-    # .stFileUploader div,
-    # .stFileUploader label {
-    #     color: #e5e7eb !important;
-    #     opacity: 1 !important;
-    # }
-
-    /* Buttons */
+    /* =========================
+       Buttons
+    ========================== */
     .stButton > button {
         background: linear-gradient(90deg, #0ea5e9, #6366f1);
-        color: white !important;
+        color: #ffffff !important;
         border: none;
         border-radius: 12px;
         padding: 0.65rem 1.4rem;
@@ -232,29 +173,75 @@ st.markdown(
 
     .stButton > button:hover {
         background: linear-gradient(90deg, #38bdf8, #818cf8);
-        color: white !important;
+        color: #ffffff !important;
     }
-    
-    /* File uploader button hover */
+
+    /* =========================
+       File Uploader
+    ========================== */
+    .stFileUploader {
+        background: transparent !important;
+        border-radius: 14px;
+        padding: 0;
+    }
+
+    [data-testid="stFileUploaderDropzone"] {
+        background-color: #f8fafc !important;
+        border: 1px solid rgba(239, 68, 68, 0.85) !important;
+        border-radius: 18px !important;
+        padding: 14px !important;
+    }
+
+    [data-testid="stFileUploaderDropzone"] div,
+    [data-testid="stFileUploaderDropzone"] span,
+    [data-testid="stFileUploaderDropzone"] small,
+    [data-testid="stFileUploaderDropzone"] p {
+        color: #475569 !important;
+        opacity: 1 !important;
+        -webkit-text-fill-color: #475569 !important;
+    }
+
+    .stFileUploader button {
+        background: linear-gradient(90deg, #0ea5e9, #6366f1) !important;
+        color: #ffffff !important;
+        border: none !important;
+        border-radius: 12px !important;
+        font-weight: 700 !important;
+    }
+
     .stFileUploader button:hover {
         background: linear-gradient(90deg, #38bdf8, #818cf8) !important;
         color: #ffffff !important;
     }
-    
-    /* Fix dropdown arrow visibility */
-    .stSelectbox svg {
-        fill: #e5e7eb !important;
-    }
-    
-    .stSelectbox div[data-baseweb="select"] span {
+
+    [data-testid="stFileUploader"] [data-testid="stFileUploaderFileName"] {
         color: #e5e7eb !important;
-    }
-    
-    .stSelectbox div[data-baseweb="select"] > div {
-        background-color: #0f172a !important;
-        border-radius: 12px !important;
+        -webkit-text-fill-color: #e5e7eb !important;
+        font-weight: 600 !important;
     }
 
+    [data-testid="stFileUploader"] small {
+        color: #cbd5e1 !important;
+        -webkit-text-fill-color: #cbd5e1 !important;
+    }
+
+    /* =========================
+       Spinner / Status Cleanup
+    ========================== */
+    [data-testid="stStatusWidget"] {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+    }
+
+    [data-testid="stAlert"],
+    [data-testid="stNotification"] {
+        background: rgba(15, 23, 42, 0.72) !important;
+        color: #e5e7eb !important;
+        border-radius: 14px !important;
+        border: 1px solid rgba(56,189,248,0.18) !important;
+    }
     </style>
     """,
     unsafe_allow_html=True

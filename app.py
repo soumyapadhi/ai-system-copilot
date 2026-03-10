@@ -7,7 +7,7 @@ from docx import Document
 # Page config
 # -----------------------------
 st.set_page_config(
-    page_title="AI System Copilot",
+    page_title="SystemLens",
     page_icon="🤖",
     layout="wide"
 )
@@ -44,28 +44,73 @@ st.markdown(
     /* =========================
        Hero Section
     ========================== */
-    .hero-box {
-        background: linear-gradient(135deg, rgba(14,165,233,0.18), rgba(99,102,241,0.18));
-        border: 1px solid rgba(148,163,184,0.18);
-        padding: 28px;
-        border-radius: 20px;
-        box-shadow: 0 12px 30px rgba(0,0,0,0.28);
-        margin-bottom: 1.2rem;
+    /* =========================
+   New Hero Section
+========================== */
+    .hero-wrapper {
+        background: linear-gradient(135deg, rgba(15,23,42,0.95), rgba(30,41,59,0.92));
+        border: 1px solid rgba(56,189,248,0.18);
+        border-radius: 24px;
+        padding: 32px;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 16px 40px rgba(0,0,0,0.28);
     }
-
-    .hero-title {
-        font-size: 2.2rem;
-        font-weight: 700;
+    
+    .hero-topline {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: rgba(56,189,248,0.12);
+        color: #7dd3fc;
+        font-size: 0.82rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-main-title {
+        font-size: 2.6rem;
+        font-weight: 800;
         color: #f8fafc;
         margin-bottom: 0.5rem;
+        line-height: 1.1;
     }
-
-    .hero-subtitle {
-        font-size: 1rem;
+    
+    .hero-highlight {
+        background: linear-gradient(90deg, #38bdf8, #818cf8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    .hero-description {
+        font-size: 1.02rem;
         color: #cbd5e1;
-        line-height: 1.6;
+        line-height: 1.7;
+        max-width: 820px;
+        margin-bottom: 1.25rem;
     }
-
+    
+    .hero-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+    }
+    
+    .hero-badge {
+        background: rgba(148,163,184,0.12);
+        border: 1px solid rgba(148,163,184,0.16);
+        color: #e2e8f0;
+        padding: 8px 14px;
+        border-radius: 999px;
+        font-size: 0.88rem;
+        font-weight: 500;
+    }
+    
+    .hero-footer-note {
+        margin-top: 14px;
+        color: #94a3b8;
+        font-size: 0.86rem;
+    }
     /* =========================
        Feature Cards
     ========================== */
@@ -274,7 +319,7 @@ def extract_artifact_text(uploaded_file):
         return extract_text_from_pdf(uploaded_file)
     elif file_name.endswith(".docx"):
         return extract_text_from_docx(uploaded_file)
-    elif file_name.endswith(".txt"):
+    elif file_name.endswith((".txt", ".cbl", ".cob", ".cpy")):
         return extract_text_from_txt(uploaded_file)
     else:
         return ""
@@ -284,11 +329,27 @@ def extract_artifact_text(uploaded_file):
 # -----------------------------
 st.markdown(
     """
-    <div class="hero-box">
-        <div class="hero-title">🤖 AI Copilot for Enterprise Systems</div>
-        <div class="hero-subtitle">
-            Upload technical documents or paste architecture notes to quickly understand
-            system flows, dependencies, onboarding context, and potential release impact.
+    <div class="hero-wrapper">
+        <div class="hero-topline">AI Product Prototype • Enterprise Systems • Legacy Modernization</div>
+        <div class="hero-main-title">
+            🔎 <span class="hero-highlight">SystemLens</span>
+        </div>
+        <div class="hero-description">
+            Understand enterprise systems, technical artifacts, and legacy code faster.
+            Upload a document or paste a workflow to analyze dependencies, assess release impact,
+            generate onboarding summaries, and break down COBOL logic into business-readable explanations.
+        </div>
+
+        <div class="hero-badges">
+            <div class="hero-badge">Explain Artifacts</div>
+            <div class="hero-badge">Trace Dependencies</div>
+            <div class="hero-badge">Assess Change Impact</div>
+            <div class="hero-badge">Onboarding Summaries</div>
+            <div class="hero-badge">COBOL Breakdown</div>
+        </div>
+
+        <div class="hero-footer-note">
+            Designed to help engineers, TPMs, PMs, and modernization teams make sense of complex systems.
         </div>
     </div>
     """,
@@ -306,7 +367,7 @@ with col1:
         <div class="feature-card">
             <div class="feature-title">⚙️ Explain Systems</div>
             <div class="feature-text">
-                Turn dense technical artifacts into simple workflow explanations and module summaries.
+                Turn technical artifacts into clear system and workflow understanding.
             </div>
         </div>
         """,
@@ -319,7 +380,7 @@ with col2:
         <div class="feature-card">
             <div class="feature-title">🔗 Trace Dependencies</div>
             <div class="feature-text">
-                Surface upstream and downstream dependencies to understand how systems connect.
+                Surface upstream and downstream connections before making changes.
             </div>
         </div>
         """,
@@ -330,9 +391,9 @@ with col3:
     st.markdown(
         """
         <div class="feature-card">
-            <div class="feature-title">🚨 Assess Change Impact</div>
+            <div class="feature-title">🧠 Decode Legacy Logic</div>
             <div class="feature-text">
-                Highlight release risks, affected workflows, and what a TPM or PM should watch closely.
+                Translate COBOL and legacy flows into business-readable explanations.
             </div>
         </div>
         """,
@@ -352,13 +413,14 @@ analysis_mode = st.selectbox(
         "Explain Artifact",
         "Dependency Analysis",
         "Change Impact Analysis",
-        "Onboarding Summary"
+        "Onboarding Summary",
+        "COBOL Breakdown"
     ]
 )
 
 uploaded_file = st.file_uploader(
-    "Upload a PDF, Word document, or text file",
-    type=["pdf", "docx", "txt"]
+    "Upload a PDF, Word document, text file, or COBOL source file",
+    type=["pdf", "docx", "txt", "cbl", "cob", "cpy"]
 )
 
 st.markdown(
@@ -474,6 +536,42 @@ Mention what is missing and what needs deeper engineering review.
 ### 6. Program / Product Insight
 Explain what a TPM should do before and during release if this area changes.
 """
+            elif analysis_mode == "COBOL Breakdown":
+                mode_instruction = """
+Return your response in exactly this structure:
+
+### 1. Program Purpose
+Explain in simple business language what this COBOL program appears to do.
+
+### 2. High-Level Logic Flow
+Break the program into step-by-step logical flow so that a non-COBOL person can understand it.
+
+### 3. Key Sections / Paragraphs
+List the important divisions, sections, or paragraphs and explain what role they likely play.
+
+### 4. Inputs and Outputs
+Identify likely input files, output files, tables, copybooks, working storage areas, or records used by the program.
+
+### 5. Business Rules / Decision Logic
+Highlight important IF conditions, validations, calculations, or branching logic that seem important.
+
+### 6. Dependencies and Impact
+Explain what upstream or downstream systems, jobs, files, or reports may depend on this program.
+
+### 7. Risks If Modified
+Mention what could break if this program is changed without proper validation.
+
+### 8. Redesign / Modernization Suggestions
+Suggest how this logic could be restructured, modularized, documented, or modernized.
+
+### 9. Beginner-Friendly Summary
+Give a short plain-English summary that a new engineer or TPM can understand quickly.
+
+Important instructions:
+- If some COBOL elements are unclear, say so explicitly
+- Do not invent file names, jobs, or system dependencies that are not visible
+- If copybooks or external dependencies seem missing, mention that as a gap
+"""
 
             else:  # Onboarding Summary
                 mode_instruction = """
@@ -531,7 +629,7 @@ User question:
                     messages=[
                         {
                             "role": "system",
-                            "content": "You are a senior enterprise systems analyst. You explain technical artifacts clearly, practically, and in a structured format for new engineers, product managers, and technical program managers."
+                            "content": "You are a senior enterprise systems analyst with strong understanding of legacy enterprise systems, including COBOL-based applications. You explain technical artifacts clearly, practically, and in a structured format for new engineers, product managers, architects, and technical program managers."
                         },
                         {"role": "user", "content": prompt}
                     ],

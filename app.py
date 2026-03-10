@@ -151,14 +151,52 @@ st.markdown(
         color: #e5e7eb !important;
     }
 
-    /* File uploader container */
+    /* File uploader outer container */
     .stFileUploader {
-        background: rgba(15,23,42,0.72);
+        background: transparent !important;
         border-radius: 14px;
-        padding: 8px;
+        padding: 0;
+    }
+    
+    /* Actual dropzone */
+    [data-testid="stFileUploaderDropzone"] {
+        background-color: #f8fafc !important;
+        border: 1px solid rgba(239, 68, 68, 0.85) !important;
+        border-radius: 18px !important;
+        padding: 14px !important;
+    }
+    
+    /* Drag and drop text */
+    [data-testid="stFileUploaderDropzone"] div,
+    [data-testid="stFileUploaderDropzone"] span,
+    [data-testid="stFileUploaderDropzone"] small,
+    [data-testid="stFileUploaderDropzone"] p {
+        color: #475569 !important;
+        opacity: 1 !important;
+        -webkit-text-fill-color: #475569 !important;
+    }
+    
+    /* Uploaded filename text */
+    [data-testid="stFileUploaderFileName"] {
+        color: #0f172a !important;
+        font-weight: 600 !important;
+    }
+    
+    /* Browse files button */
+    .stFileUploader button {
+        background: linear-gradient(90deg, #0ea5e9, #6366f1) !important;
+        color: #ffffff !important;
+        border: none !important;
+        border-radius: 12px !important;
+        font-weight: 700 !important;
+    }
+    
+    .stFileUploader button:hover {
+        background: linear-gradient(90deg, #38bdf8, #818cf8) !important;
+        color: #ffffff !important;
     }
 
-    /* Browse files button */
+    /* Browse files button */    
     .stFileUploader button {
         background: linear-gradient(90deg, #0ea5e9, #6366f1) !important;
         color: #ffffff !important;
@@ -173,13 +211,13 @@ st.markdown(
     }
 
     /* Uploaded file name / helper text */
-    .stFileUploader small,
-    .stFileUploader span,
-    .stFileUploader div,
-    .stFileUploader label {
-        color: #e5e7eb !important;
-        opacity: 1 !important;
-    }
+    # .stFileUploader small,
+    # .stFileUploader span,
+    # .stFileUploader div,
+    # .stFileUploader label {
+    #     color: #e5e7eb !important;
+    #     opacity: 1 !important;
+    # }
 
     /* Buttons */
     .stButton > button {

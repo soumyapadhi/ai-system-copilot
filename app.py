@@ -35,7 +35,7 @@ if st.button("Run Analysis"):
     else:
         try:
             if analysis_mode == "Explain Artifact":
-                mode_instruction = """
+    mode_instruction = """
 Return your response in exactly this structure:
 
 ### 1. System / Module Summary
@@ -44,14 +44,31 @@ Explain in 2-3 lines what this artifact appears to do.
 ### 2. Key Components / Dependencies
 List the main services, modules, systems, or actors mentioned or implied in the artifact.
 
-### 3. Workflow Explanation
+### 3. End-to-End Workflow
 Explain the likely end-to-end flow step by step in simple terms.
 
-### 4. Potential Impact if This Changes
+### 4. Simple Flow Diagram
+Represent the workflow as a simple arrow diagram like this:
+
+Customer
+↓
+OrderService
+↓
+InventoryService
+↓
+PaymentService
+↓
+NotificationService
+
+### 5. Potential Impact if This Changes
 Explain what downstream impact or risks may happen if this module or workflow changes.
 
-### 5. Gaps / Unclear Areas
+### 6. Gaps / Unclear Areas
 Mention what is missing, ambiguous, or would need validation from an engineer or documentation.
+
+### 7. Program / Product Insight
+Explain what a product manager or technical program manager should pay attention to in this system.
+Mention risks, scaling concerns, or operational dependencies.
 """
 
             elif analysis_mode == "Dependency Analysis":

@@ -247,11 +247,12 @@ with col3:
         unsafe_allow_html=True
     )
 
+st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
 
 # -----------------------------
 # Input section
 # -----------------------------
-st.markdown('<div class="section-card">', unsafe_allow_html=True)
+# st.markdown('<div class="section-card">', unsafe_allow_html=True)
 
 analysis_mode = st.selectbox(
     "🔍 Choose analysis mode",

@@ -1,4 +1,5 @@
-SystemLens :
+SystemLens :-
+--------------
 
 AI Copilot for Understanding Enterprise Systems and Legacy Code
 
@@ -8,7 +9,8 @@ Large enterprise platforms often accumulate significant technical complexity ove
 
 SystemLens explores how AI can accelerate this process by converting technical artifacts into structured, human-readable insights.
 
-Problem :
+Problem :-
+-----------
 
 Enterprise systems—especially in banking, telecom, and large-scale platforms—often suffer from:
 
@@ -19,7 +21,8 @@ Enterprise systems—especially in banking, telecom, and large-scale platforms�
 
 Engineers and product teams frequently spend significant time simply understanding how a system works before making any changes.
 
-Solution :
+Solution :-
+-----------
 
 SystemLens uses AI to analyze technical artifacts and generate structured explanations that help teams quickly build a mental model of the system.
 
@@ -34,10 +37,13 @@ Instead of manually interpreting code or documentation, users can upload artifac
 For legacy COBOL programs, SystemLens can also translate program logic into business-readable explanations.
 
 Demo :
+-------
 
 <img width="1107" height="661" alt="image" src="https://github.com/user-attachments/assets/a00b19a0-acd5-4251-b7e3-4e6cc9309735" />
 
+
 Key Features :
+---------------
 Explain Technical Artifacts
 
 Upload architecture notes, documentation, or code snippets and generate structured system explanations.
@@ -68,6 +74,7 @@ Translate legacy COBOL code into structured insights including:
 This helps teams understand legacy programs before refactoring or modernization.
 
 Tech Stack :
+-------------
 
 Python
 Streamlit
@@ -75,6 +82,7 @@ LLM APIs
 PDF / DOCX document parsing libraries
 
 Example Use Cases :
+--------------------
 
 SystemLens can assist teams with:
 
@@ -91,6 +99,7 @@ Cross-functional understanding
 Helping TPMs, PMs, and architects understand system behavior without reading large codebases.
 
 Why I Built This :
+------------------
 
 Having worked with complex enterprise systems, I have seen how difficult it can be to understand legacy platforms—especially when documentation is limited and system behavior is spread across multiple components.
 
@@ -103,6 +112,7 @@ This project explores how AI can help engineers and product teams:
 The goal is not just automation, but improving how teams reason about complex systems.
 
 Future Experiments :
+--------------------
 
 Ideas I plan to explore next
 
@@ -113,13 +123,17 @@ Ideas I plan to explore next
 • modernization recommendations for legacy modules
 
 Project Status :
+----------------
 
 ⚠️ Prototype — built as an exploration of how AI can assist engineers working with complex enterprise systems.
 
-Repository Structure
+Repository Structure :
+----------------------
+
 app.py              → Streamlit application
 requirements.txt    → Dependencies
 README.md           → Project documentation
 
 License :
+----------
 MIT License
